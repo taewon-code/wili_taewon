@@ -3,44 +3,47 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI 위키",
-  description: "팀 지식베이스 — 질문하면 AI가 출처와 함께 답해주는 위키",
+  title: "LLM 위키",
+  description: "AI가 소스를 읽고 스스로 작성·유지하는 살아있는 지식베이스",
 };
+
+const NAV = [
+  { href: "/", label: "홈" },
+  { href: "/ingest", label: "소스 수집" },
+  { href: "/ask", label: "질의" },
+  { href: "/lint", label: "점검" },
+  { href: "/log", label: "로그" },
+];
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-neutral-50 text-neutral-900">
         <header className="border-b border-neutral-200 bg-white">
-          <nav className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
-            <Link href="/" className="text-lg font-bold">
-              📚 AI 위키
+          <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+            <Link href="/" className="shrink-0 text-lg font-bold">
+              🧠 LLM 위키
             </Link>
-            <div className="flex items-center gap-2 text-sm">
-              <Link
-                href="/ask"
-                className="rounded-md px-3 py-1.5 font-medium text-blue-700 hover:bg-blue-50"
-              >
-                AI에게 질문
-              </Link>
-              <Link
-                href="/pages/new"
-                className="rounded-md bg-neutral-900 px-3 py-1.5 font-medium text-white hover:bg-neutral-700"
-              >
-                새 문서
-              </Link>
+            <div className="flex items-center gap-1 text-sm">
+              {NAV.slice(1).map((n) => (
+                <Link
+                  key={n.href}
+                  href={n.href}
+                  className="rounded-md px-3 py-1.5 font-medium text-neutral-600 hover:bg-neutral-100"
+                >
+                  {n.label}
+                </Link>
+              ))}
             </div>
           </nav>
         </header>
-        <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8">
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
           {children}
         </main>
         <footer className="border-t border-neutral-200 py-4 text-center text-xs text-neutral-400">
-          AI 위키 · Next.js + Claude
+          LLM 위키 · Ingest · Query · Lint · Next.js + Claude
         </footer>
       </body>
     </html>

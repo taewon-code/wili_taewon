@@ -35,8 +35,9 @@ yarn-error.log*
 # keep the example env in the repo
 !.env.example
 
-# local wiki content (MVP JSON store)
+# local wiki content
 /data
+/wiki-data
 
 # vercel
 .vercel
