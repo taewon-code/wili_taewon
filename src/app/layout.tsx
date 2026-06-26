@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 const NAV = [
   { href: "/", label: "홈" },
   { href: "/ingest", label: "소스 수집" },
+  { href: "/import/notion", label: "Notion" },
   { href: "/ask", label: "질의" },
   { href: "/lint", label: "점검" },
   { href: "/log", label: "로그" },
